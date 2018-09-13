@@ -1,16 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./style/index.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import Content from "./js/components/Content";
+import App from './js/components/App';
+import './style/index.scss';
 
-const App = () => {
-  return (
-    <div>
-      Hello React!
-      <Content />
-    </div>
-  );
-};
-
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));
