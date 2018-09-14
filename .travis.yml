@@ -2,3 +2,7 @@ language: node_js
 node_js:
   - 'iojs'
   - '7'
+env:
+  - TEST_DIR=client
+  - TEST_DIR=server
+script: cd $TEST_DIR && npm install && npm test
