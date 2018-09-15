@@ -1,0 +1,20 @@
+{
+  "name": "foodcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edmondxiexie/leorecipes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edmondxiexie/leorecipes/issues"
+  },
+  "homepage": "https://github.com/edmondxiexie/leorecipes#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
