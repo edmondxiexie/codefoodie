@@ -13,3 +13,5 @@ deploy:
   app: codefoodie
   on:
     repo: edmondxiexie/codefoodie
+notifications:
+  email: false

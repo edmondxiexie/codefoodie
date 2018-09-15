@@ -1,24 +1,26 @@
-const webpack = require("webpack");
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const outputDirectory = 'dist';
 
 module.exports = {
-  entry: "./src//index.js",
+  entry: './src//index.js',
   output: {
-    filename: "build.[hash:8].js",
-
-    // Absolute path
-    path: path.resolve("./build")
+    filename: 'bundle.js',
+    path: path.join(__dirname, outputDirectory)
   },
 
   devServer: {
-    contentBase: "./build/",
     port: 8000,
     compress: true,
     open: true,
-    hot: true
+    hot: true,
+    proxy: {
+      '/api': 'http://localhost:5000'
+    }
   },
 
   module: {
@@ -26,22 +28,22 @@ module.exports = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          use: [{ loader: "css-loader" }]
+          use: [{ loader: 'css-loader' }]
         })
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          use: [{ loader: "css-loader" }, { loader: "sass-loader" }]
+          use: [{ loader: 'css-loader' }, { loader: 'sass-loader' }]
         })
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env"]
+            presets: ['@babel/preset-env']
           }
         }
       }
@@ -50,17 +52,16 @@ module.exports = {
 
   plugins: [
     new ExtractTextPlugin({
-      filename: "css/index.css"
+      filename: 'css/index.css'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin(["./build"]),
+    new CleanWebpackPlugin(['./build']),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      title: "Food Code",
-      hash: true
+      template: './src/index.html',
+      hash: false
     })
   ],
 
-  mode: "development",
+  mode: 'development',
   resolve: {}
 };

@@ -1,20 +1,27 @@
 {
-  "name": "foodcode",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/edmondxiexie/leorecipes.git"
+  "scripts": {
+    "test": "mocha ./server/**/*.test.js",
+    "test-watch": "nodemon --exec \"npm test\"",
+    "start": "node ./server/app.js",
+    "dev": "nodemon ./server/app.js",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/edmondxiexie/leorecipes/issues"
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "os": "^0.1.1"
   },
-  "homepage": "https://github.com/edmondxiexie/leorecipes#readme",
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "eslint": "^5.4.0",
+    "expect": "^1.20.2",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4"
   }
 }
