@@ -7,11 +7,6 @@ const app = express();
 
 app.use(bodyParser.json());
 
-console.log(
-  '-------',
-  path.resolve(__dirname, '../client', 'dist', 'index.html')
-);
-
 if (process.env.NODE_ENV === 'production') {
   // production assets
   // like main.js or main.css file
