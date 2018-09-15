@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === 'production') {
   // production assets
   // like main.js or main.css file
-  app.use(express.static('../client/dist'));
+  app.use(express.static('client/dist'));
 
   // index.html file if it doesn't recognize the route
   app.get('*', (req, res) => {
