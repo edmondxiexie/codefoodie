@@ -1,9 +1,7 @@
 language: node_js
 node_js:
   - '7'
-env:
-  - TEST_DIR=server
-script: cd $TEST_DIR && npm install && npm test
+script: npm install && npm test
 cache:
   - node_modules
 deploy:
