@@ -51,4 +51,6 @@ app.get('/api/users', function(req, res, next) {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
 
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
 module.exports.app = app;
