@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const keys = require('./config/keys');
+// const keys = require('./config/keys');
 require('./models/User');
 require('./models/Todo');
 
