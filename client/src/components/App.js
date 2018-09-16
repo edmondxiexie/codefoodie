@@ -11,14 +11,14 @@ class App extends Component {
   }
 
   componentWillMount() {
-    axios
-      .get('api/users')
-      .then(function(response) {
-        console.log(response.data);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    // axios
+    //   .get('api/users')
+    //   .then(function(response) {
+    //     console.log(response.data);
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   }
 
   render() {

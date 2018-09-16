@@ -7,7 +7,11 @@ class Button extends Component {
 
   render() {
     return (
-      <div className="button" onClick={() => {}}>
+      <div
+        className="button"
+        onClick={() => {
+          console.log('Button Clicked!');
+        }}>
         <i className="fas fa-chevron-circle-left" />
         <span>Previous</span>
       </div>
