@@ -7,7 +7,7 @@ const keys = require('./config/keys');
 require('./models/User');
 require('./models/Todo');
 
-mongoose.connect(keys.mongoURI);
+// mongoose.connect(keys.mongoURI);
 
 const app = express();
 
