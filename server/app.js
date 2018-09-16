@@ -1,7 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
-const ejs = require('ejs');
+
+const keys = require('./config/keys');
+require('./models/User');
+require('./models/Todo');
+
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 
@@ -27,5 +33,24 @@ app.get('/api/users', function(req, res, next) {
   res.json(nums);
 });
 
+// const Todo = mongoose.model('Todo');
+
+// const newTodo = new Todo({
+//   text: 'Cook dinner'
+// });
+
+// newTodo.save().then(
+//   doc => {
+//     console.log('Saved todo', doc);
+//   },
+//   e => {
+//     console.log('Unable to save todo!');
+//   }
+// );
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
+
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
+module.exports.app = app;
