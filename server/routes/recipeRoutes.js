@@ -6,13 +6,15 @@ const router = express.Router();
 
 const Recipe = mongoose.model('Recipe');
 
-router.get('/', (req, res, next) => {
-  const nums = [
-    { id: 1, name: 'a' },
-    { id: 2, name: 'b' },
-    { id: 3, name: 'e' }
-  ];
-  res.json(nums);
+router.get('/all', (req, res, next) => {
+  Recipe.find().then(
+    recipes => {
+      res.send({ recipes });
+    },
+    err => {
+      res.status(400).send(err);
+    }
+  );
 });
 
 router.post('/new', (req, res) => {

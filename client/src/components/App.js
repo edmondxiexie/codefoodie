@@ -4,21 +4,11 @@ import axios from 'axios';
 
 import Navbar from './Navbar';
 import Button from './common/Button';
+import Footer from './Footer';
 
 class App extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentWillMount() {
-    // axios
-    //   .get('api/users')
-    //   .then(function(response) {
-    //     console.log(response.data);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
   }
 
   render() {
@@ -26,6 +16,7 @@ class App extends Component {
       <div>
         <Navbar />
         <Button />
+        <Footer />
       </div>
     );
   }

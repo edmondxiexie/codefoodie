@@ -12,6 +12,7 @@ require('./models/Recipe');
 
 // Routes
 const recipeRoutes = require('./routes/recipeRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 mongoose.connect(keys.mongoURI).then(
   () => {
@@ -40,6 +41,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // API Routers
 app.use('/api/recipe', recipeRoutes);
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
