@@ -4,10 +4,25 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const keys = require('./config/keys');
+
+// Models
 require('./models/User');
 require('./models/Todo');
+require('./models/Recipe');
 
-mongoose.connect(keys.mongoURI);
+// Routes
+const recipeRoutes = require('./routes/recipeRoutes');
+const authRoutes = require('./routes/authRoutes');
+
+mongoose.connect(keys.mongoURI).then(
+  () => {
+    console.log('Connected to MongoBD server.');
+  },
+  err => {
+    console.log('Unable to connect to MongoDB server.');
+    console.log('Error: ', err);
+  }
+);
 
 const app = express();
 
@@ -24,33 +39,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.get('/api/users', function(req, res, next) {
-  const nums = [
-    { id: 1, name: 'a' },
-    { id: 2, name: 'b' },
-    { id: 3, name: 'e' }
-  ];
-  res.json(nums);
-});
-
-// const Todo = mongoose.model('Todo');
-
-// const newTodo = new Todo({
-//   text: 'Cook dinner'
-// });
-
-// newTodo.save().then(
-//   doc => {
-//     console.log('Saved todo', doc);
-//   },
-//   e => {
-//     console.log('Unable to save todo!');
-//   }
-// );
+// API Routers
+app.use('/api/recipe', recipeRoutes);
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Listening on port ' + PORT));
-
-console.log('process.env.NODE_ENV', process.env.NODE_ENV);
-
-module.exports.app = app;

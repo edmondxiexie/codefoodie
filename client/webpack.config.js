@@ -9,11 +9,17 @@ const outputDirectory = 'dist';
 module.exports = {
   entry: './src/index.js',
   output: {
+    path: path.resolve(__dirname, outputDirectory),
     filename: 'bundle.js',
-    path: path.join(__dirname, outputDirectory)
+
+    // publicPath allows you to specify the base path for
+    // all the assets within your application.
+    publicPath: '/'
   },
 
   devServer: {
+    // historyAPIFallback will redirect 404s to /index.html
+    historyApiFallback: true,
     port: 8000,
     compress: true,
     open: true,
