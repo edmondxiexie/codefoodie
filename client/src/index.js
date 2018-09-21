@@ -26,8 +26,10 @@ const Detail = () => {
 ReactDOM.render(
   <BrowserRouter>
     <div>
-      <Route path="/navbar" component={NavBar} />
-      <Route path="/footer" component={Footer} />
+      <NavBar />
+      <Route exact path="/" component={Home} />
+      <Route path="/detail" component={Detail} />
+      <Footer />
     </div>
   </BrowserRouter>,
   document.getElementById('app')
