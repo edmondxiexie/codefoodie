@@ -13,9 +13,6 @@ require('./models/User');
 require('./models/Todo');
 require('./models/Recipe');
 
-// Services
-require('./services/passport.js'); //add this line
-
 // Routes
 const recipeRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/authRoutes');

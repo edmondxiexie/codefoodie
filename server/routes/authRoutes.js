@@ -25,6 +25,7 @@ router.get('/me', authenticate, (req, res) => {
   res.send(req.user);
 });
 
+// api/auth/signup
 router.post('/signup', (req, res) => {
   const { email, password } = req.body;
 
@@ -47,6 +48,33 @@ router.post('/signup', (req, res) => {
     .then(token => {
       res.header('x-auth', token).send(user);
     });
+});
+
+// api/auth/login
+router.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  User.findByCredentials(email, password)
+    .then(user => {
+      return user.generateAuthToken().then(token => {
+        res.header('x-auth', token).send(user);
+      });
+    })
+    .catch(e => {
+      res.status(400).send();
+    });
+});
+
+// api/auth/logout
+router.delete('/logout', authenticate, (req, res) => {
+  req.user.removeToken(req.token).then(
+    () => {
+      res.status(200).send();
+    },
+    () => {
+      res.status(400).send();
+    }
+  );
 });
 
 module.exports = router;
