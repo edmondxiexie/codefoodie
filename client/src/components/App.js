@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import axios from 'axios';
+import { logoutUtil } from '../utils/authUtil';
 
-// import Navbar from './Navbar';
+import Login from './login/Login';
+
+import Navbar from './Navbar';
 // import Button from './common/Button';
 // import Footer from './Footer';
 
-const NavBar = () => {
-  return <div>NavBar!</div>;
-};
+// const NavBar = () => {
+//   return (
+//     <div>
+//       NavBar!
+//       <button
+//         className="btn waves-effect waves-light"
+//         name="submit"
+//         onClick={() => {
+//           logoutUtil();
+//         }}
+//       >
+//         Log out
+//       </button>
+//     </div>
+//   );
+// };
 
 const Footer = () => {
   return <div>Footer!</div>;
@@ -48,12 +64,14 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            <NavBar />
+            <Navbar />
+            {`Auth: ${this.props.auth}`}
             <Route exact path="/" component={Landing} />
             <Route exact path="/recipes" component={RecipeHome} />
             <Route path="/recipes/new" component={RecipeNew} />
             <Route path="/recipes/detail/:id" component={RecipeDetail} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/login" component={Login} />
             <Footer />
           </div>
         </BrowserRouter>

@@ -17,6 +17,8 @@ require('./models/Recipe');
 const recipeRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/authRoutes');
 
+const app = express();
+
 mongoose.connect(keys.mongoURI).then(
   () => {
     console.log('Connected to MongoBD server.');
@@ -27,19 +29,17 @@ mongoose.connect(keys.mongoURI).then(
   }
 );
 
-const app = express();
-
 app.use(bodyParser.json());
 
-app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
-  })
-);
+// app.use(
+//   cookieSession({
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: [keys.cookieKey]
+//   })
+// );
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // API Routers
 app.use('/api/recipe', recipeRoutes);
