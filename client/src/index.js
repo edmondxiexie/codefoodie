@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import path from 'path';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import store from './store/store';
 
 import App from './components/App';
-import './style/index.scss';
+// import reducers from './reducers';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import './style/index.scss';
 
 const NavBar = () => {
   return <div>NavBar!</div>;
@@ -23,14 +27,15 @@ const Detail = () => {
   return <div>Detail!</div>;
 };
 
+const auth = localStorage.getItem('x-token') ? true : false;
+
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// const store = createStore(reducers, {}, composeEnhancers(applyMiddleware()));
+
 ReactDOM.render(
-  <BrowserRouter>
-    <div>
-      <NavBar />
-      <Route exact path="/" component={Home} />
-      <Route path="/detail" component={Detail} />
-      <Footer />
-    </div>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <App auth={auth} />
+  </Provider>,
   document.getElementById('app')
 );

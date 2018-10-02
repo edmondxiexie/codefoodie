@@ -9,19 +9,16 @@ class Navbar extends Component {
     return (
       <div className="navbar-base">
         <nav>
-          <div className="nav-wrapper">
+          <div className="nav-wrapper brown darken-4">
             <a href="#" className="brand-logo">
-              Logo
+              Code Foodie
             </a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
-                <a href="#">Sass</a>
+                <a href="/signup">Sign up</a>
               </li>
               <li>
-                <a href="#">Components</a>
-              </li>
-              <li>
-                <a href="#">JavaScript</a>
+                <a href="/login">Sign in</a>
               </li>
             </ul>
           </div>
