@@ -46,6 +46,7 @@ app.use('/api/recipe', recipeRoutes);
 app.use('/api/auth', authRoutes);
 
 if (process.env.NODE_ENV === 'production') {
+  console.log(`****** NODE_ENV: ${process.env.NODE_ENV}`);
   // production assets
   // like main.js or main.css file
   app.use(express.static('client/dist'));
