@@ -29,6 +29,7 @@ const Detail = () => {
 
 const auth = localStorage.getItem('x-token') ? true : false;
 
+// test
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // const store = createStore(reducers, {}, composeEnhancers(applyMiddleware()));
