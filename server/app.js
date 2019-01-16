@@ -2,9 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const cookieSession = require('cookie-session');
 
 const keys = require('./config/keys');
 
@@ -16,6 +13,7 @@ require('./models/Recipe');
 // Routes
 const recipeRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/authRoutes');
+const numRoutes = require('./routes/numRoutes');
 
 const app = express();
 
@@ -31,19 +29,10 @@ mongoose.connect(keys.mongoURI).then(
 
 app.use(bodyParser.json());
 
-// app.use(
-//   cookieSession({
-//     maxAge: 30 * 24 * 60 * 60 * 1000,
-//     keys: [keys.cookieKey]
-//   })
-// );
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 // API Routers
 app.use('/api/recipe', recipeRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/num', numRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   console.log(`****** NODE_ENV: ${process.env.NODE_ENV} ******`);
