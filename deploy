@@ -1,0 +1,13 @@
+-#!/bin/sh      
+ssh root@157.230.131.190 <<EOF        
+ cd /codefoodie 
+ git pull      
+ cd client 
+ npm install   
+ npm run build
+ cd ..
+ cd server
+ npm install
+ npm run start
+ exit       
+EOF
