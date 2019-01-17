@@ -1,4 +1,4 @@
--#!/bin/bash   
+#!/bin/sh   
 ssh root@157.230.131.190 <<EOF        
  cd /codefoodie 
  git pull      
