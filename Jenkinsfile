@@ -10,10 +10,17 @@ pipeline {
       }
     }
     
-    stage('Frontend Install dependencies and Build') {
+    stage('Frontend Install dependencies') {
       steps {
         dir('client') {
             sh 'npm install'
+        }
+      }
+    }
+        
+    stage('Frontend Build') {
+      steps {
+        dir('client') {
             sh 'npm run build'
         }
       }
