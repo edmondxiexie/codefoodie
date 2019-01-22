@@ -15,7 +15,6 @@ const recipeRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/authRoutes');
 const numRoutes = require('./routes/numRoutes');
 
-// TEST TEST JENKINS
 const app = express();
 
 mongoose.connect(keys.mongoURI).then(
