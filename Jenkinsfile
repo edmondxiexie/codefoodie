@@ -4,15 +4,10 @@ pipeline {
   tools {nodejs "my nodejs"}
 
   triggers {
-    pollSCM('') // Enabling being build on Push
+    pollSCM('0 0 * * 0')
   }
  
   stages {
-    stage('Checkout') {
-        properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
-        checkout scm
-    }
-
     stage('Cloning Git') {
       steps {
         git 'https://github.com/edmondxiexie/codefoodie'
