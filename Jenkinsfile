@@ -9,13 +9,6 @@ pipeline {
  
   stages {
 
-    stage('Checkout') {
-      steps {
-        properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('* * * * *')])])
-        checkout scm 
-      }
-    }
-
     stage('Cloning Git') {
       steps {
         git 'https://github.com/edmondxiexie/codefoodie'
