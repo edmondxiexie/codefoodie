@@ -1,14 +1,13 @@
 pipeline {
   agent any
  
-  triggers { 
-    pollSCM('') 
+  triggers {
+    pollSCM('') // Enabling being build on Push
   }
 
   tools {nodejs "my nodejs"}
  
   stages {
-
     stage('Cloning Git') {
       steps {
         git 'https://github.com/edmondxiexie/codefoodie'
