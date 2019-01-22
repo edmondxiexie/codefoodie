@@ -7,21 +7,8 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        checkout([$class: 'SubversionSCM', 
-            additionalCredentials: [], 
-            excludedCommitMessages: '', 
-            excludedRegions: '', 
-            excludedRevprop: '', 
-            excludedUsers: 'buildbot', 
-            filterChangelog: false, 
-            ignoreDirPropChanges: false, 
-            includedRegions: '', 
-            locations: [[credentialsId: '39bb4fa1-56ce-4ddf-9bd7-86528cb798ec', 
-                depthOption: 'infinity', 
-                ignoreExternalsOption: true, 
-                local: '.', 
-                remote: "http://svn/something/trunk/"]],
-            workspaceUpdater: [$class: 'UpdateUpdater']])      
+        properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('* * * * *')])])
+        checkout scm 
       }
     }
 
