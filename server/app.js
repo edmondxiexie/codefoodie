@@ -31,6 +31,7 @@ app.use(bodyParser.json());
 
 // API Routers
 app.use('/api/recipe', recipeRoutes);
+
 app.use('/api/auth', authRoutes);
 app.use('/api/num', numRoutes);
 
