@@ -2,7 +2,7 @@ pipeline {
   agent any
  
   triggers { 
-    pollSCM(') 
+    pollSCM('') 
   }
 
   tools {nodejs "my nodejs"}
