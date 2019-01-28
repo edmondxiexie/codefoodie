@@ -26,58 +26,44 @@ import Navbar from './Navbar';
 //   );
 // };
 
-const Footer = () => {
-  return <div>Footer!</div>;
-};
+const Footer = () => <div>Footer!</div>;
 
-const Dashboard = () => {
-  return <div>Dashboard!</div>;
-};
+const Dashboard = () => <div>Dashboard!</div>;
 
-const Detail = () => {
-  return <div>Detail!</div>;
-};
+const Detail = () => <div>Detail!</div>;
 
-const Landing = () => {
-  return <div>Landing Page</div>;
-};
+const Landing = () => <div>Landing Page</div>;
 
-const RecipeHome = () => {
-  return <div>RecipeHome</div>;
-};
+const RecipeHome = () => <div>RecipeHome</div>;
 
-const RecipeNew = () => {
-  return <div>RecipeNew</div>;
-};
+const RecipeNew = () => <div>RecipeNew</div>;
 
-const RecipeDetail = () => {
-  return <div>RecipeDetail</div>;
-};
+const RecipeDetail = () => <div>RecipeDetail</div>;
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
-    return (
-      <div>
-        <BrowserRouter>
-          <div>
-            <Navbar />
-            {`Auth: ${this.props.auth}`}
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/recipes" component={RecipeHome} />
-            <Route path="/recipes/new" component={RecipeNew} />
-            <Route path="/recipes/detail/:id" component={RecipeDetail} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/login" component={Login} />
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <BrowserRouter>
+                    <div>
+                        <Navbar />
+                        {`Auth: ${this.props.auth}`}
+                        <Route exact path="/" component={ Landing } />
+                        <Route exact path="/recipes" component={ RecipeHome } />
+                        <Route path="/recipes/new" component={ RecipeNew } />
+                        <Route path="/recipes/detail/:id" component={ RecipeDetail } />
+                        <Route path="/dashboard" component={ Dashboard } />
+                        <Route path="/login" component={ Login } />
+                        <Footer />
+                    </div>
+                </BrowserRouter>
+            </div>
+        );
+    }
 }
 
 export default App;

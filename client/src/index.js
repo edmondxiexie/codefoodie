@@ -11,23 +11,15 @@ import App from './components/App';
 
 import './style/index.scss';
 
-const NavBar = () => {
-  return <div>NavBar!</div>;
-};
+const NavBar = () => <div>NavBar!</div>;
 
-const Footer = () => {
-  return <div>Footer!</div>;
-};
+const Footer = () => <div>Footer!</div>;
 
-const Home = () => {
-  return <div>Home!</div>;
-};
+const Home = () => <div>Home!</div>;
 
-const Detail = () => {
-  return <div>Detail!</div>;
-};
+const Detail = () => <div>Detail!</div>;
 
-const auth = localStorage.getItem('x-token') ? true : false;
+const auth = !!localStorage.getItem('x-token');
 
 // test
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -35,8 +27,8 @@ const auth = localStorage.getItem('x-token') ? true : false;
 // const store = createStore(reducers, {}, composeEnhancers(applyMiddleware()));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App auth={auth} />
-  </Provider>,
-  document.getElementById('app')
+    <Provider store={ store }>
+        <App auth={ auth } />
+    </Provider>,
+    document.getElementById('app'),
 );
