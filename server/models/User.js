@@ -23,120 +23,119 @@ const UserSchema = new Schema({
         required: true,
         minlength: 6,
     },
-    tokens: [
-        {
-            access: {
-                type: String,
-                require: true,
-            },
-            token: {
-                type: String,
-                require: true,
-            },
-        },
-    ],
-    user_id: {
-        type: String,
-        required: true,
+    date: {
+        type: Date,
+        default: Date.now,
     },
-    username: {
-        type: String,
-    },
+    // user_id: {
+    //     type: String,
+    //     required: true,
+    // },
+    // username: {
+    //     type: String,
+    //     required: true,
+    // },
+    // first_name: {
+    //     type: String,
+    // },
+    // last_name: {
+    //     type: String,
+    // },
 });
 
-UserSchema.methods.generateAuthToken = function () {
-    const user = this;
-    const access = 'auth';
-    const token = jwt
-        .sign({ _id: user._id.toHexString(), access }, 'abc123')
-        .toString();
+// UserSchema.methods.generateAuthToken = function () {
+//     const user = this;
+//     const access = 'auth';
+//     const token = jwt
+//         .sign({ _id: user._id.toHexString(), access }, 'abc123')
+//         .toString();
 
-    user.tokens = user.tokens.concat([
-        {
-            access,
-            token,
-        },
-    ]);
+//     user.tokens = user.tokens.concat([
+//         {
+//             access,
+//             token,
+//         },
+//     ]);
 
-    return user.save().then(() => token);
-};
+//     return user.save().then(() => token);
+// };
 
-UserSchema.methods.removeToken = function (token) {
-    const user = this;
+// UserSchema.methods.removeToken = function (token) {
+//     const user = this;
 
-    return user.update({
-        $pull: {
-            tokens: {
-                token,
-            },
-        },
-    });
-};
+//     return user.update({
+//         $pull: {
+//             tokens: {
+//                 token,
+//             },
+//         },
+//     });
+// };
 
-// Overwrite toJSON method
-UserSchema.methods.toJSON = function () {
-    const user = this;
-    const userObject = user.toObject();
+// // Overwrite toJSON method
+// UserSchema.methods.toJSON = function () {
+//     const user = this;
+//     const userObject = user.toObject();
 
-    const { _id, email } = userObject;
+//     const { _id, email } = userObject;
 
-    return {
-        _id,
-        email,
-    };
-};
+//     return {
+//         _id,
+//         email,
+//     };
+// };
 
-UserSchema.statics.findByToken = function (token) {
-    const User = this;
-    let decoded;
+// UserSchema.statics.findByToken = function (token) {
+//     const User = this;
+//     let decoded;
 
-    try {
-    // Will throw an error
-        decoded = jwt.verify(token, 'abc123');
-    } catch (e) {
-        return Promise.reject();
-    }
+//     try {
+//     // Will throw an error
+//         decoded = jwt.verify(token, 'abc123');
+//     } catch (e) {
+//         return Promise.reject();
+//     }
 
-    return User.findOne({
-        _id: decoded._id,
-        'tokens.token': token,
-        'tokens.access': 'auth',
-    });
-};
+//     return User.findOne({
+//         _id: decoded._id,
+//         'tokens.token': token,
+//         'tokens.access': 'auth',
+//     });
+// };
 
-UserSchema.statics.findByCredentials = function (email, password) {
-    const User = this;
+// UserSchema.statics.findByCredentials = function (email, password) {
+//     const User = this;
 
-    return User.findOne({ email }).then((user) => {
-        if (!user) {
-            return Promise.reject();
-        }
+//     return User.findOne({ email }).then((user) => {
+//         if (!user) {
+//             return Promise.reject();
+//         }
 
-        return new Promise((resolve, reject) => {
-            bcrypt.compare(password, user.password, (err, res) => {
-                if (res) {
-                    resolve(user);
-                } else {
-                    reject();
-                }
-            });
-        });
-    });
-};
+//         return new Promise((resolve, reject) => {
+//             bcrypt.compare(password, user.password, (err, res) => {
+//                 if (res) {
+//                     resolve(user);
+//                 } else {
+//                     reject();
+//                 }
+//             });
+//         });
+//     });
+// };
 
-UserSchema.pre('save', function (next) {
-    const user = this;
+// UserSchema.pre('save', function (next) {
+//     const user = this;
 
-    if (user.isModified('password')) {
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(user.password, salt, (err, hash) => {
-                user.password = hash;
-                next();
-            });
-        });
-    } else {
-        next();
-    }
-});
+//     if (user.isModified('password')) {
+//         bcrypt.genSalt(10, (err, salt) => {
+//             bcrypt.hash(user.password, salt, (err, hash) => {
+//                 user.password = hash;
+//                 next();
+//             });
+//         });
+//     } else {
+//         next();
+//     }
+// });
 
 mongoose.model('User', UserSchema);

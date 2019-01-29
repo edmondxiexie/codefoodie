@@ -1,5 +1,6 @@
 # Ignore node modules
 node_modules/
+package-lock.json
 
 # Ingnore dev config
-dev.js
+server/config/dev.js
