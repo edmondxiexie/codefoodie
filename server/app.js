@@ -44,16 +44,17 @@ app.use('/api/recipe', recipeRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/num', numRoutes);
 
-if (process.env.NODE_ENV === 'production') {
-    console.log(`****** NODE_ENV: ${process.env.NODE_ENV} ******`);
-    // production assets
-    // like main.js or main.css file
-    app.use(express.static('../client/dist'));
+console.log(`****** NODE_ENV: ${process.env.NODE_ENV} ******`);
 
-    // index.html file if it doesn't recognize the route
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
-    });
+if (process.env.NODE_ENV === 'production') {
+  // production assets
+  // like main.js or main.css file
+  app.use(express.static('../client/dist'));
+
+  // index.html file if it doesn't recognize the route
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
+  });
 }
 
 const PORT = process.env.PORT || 5000;
