@@ -1,9 +1,11 @@
 // keys.js
-const devConfig = require('./dev.js');
-const prodConfig = require('./prod.js');
+
+/* eslint-disable global-require */
 
 if (process.env.NODE_ENV === 'production') {
-    module.exports = prodConfig;
+    module.exports = require('./prod.js');
 } else {
-    module.exports = devConfig;
+    module.exports = require('./dev.js');
 }
+
+/* eslint-enable global-require */
