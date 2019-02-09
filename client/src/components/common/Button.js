@@ -1,32 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Button extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
+const Button = () => (
+    <div>
         <div
-          className="button"
-          onClick={() => {
-            console.log('Button Clicked!');
-          }}>
-          <i className="fas fa-chevron-circle-left" />
-          <span>Previous</span>
+            className="button"
+            onClick={ () => {
+                console.log('Button Clicked!');
+            } }
+        >
+            <i className="fas fa-chevron-circle-left" />
+            <span>Previous</span>
         </div>
         <div
-          className="button"
-          onClick={() => {
-            console.log('Button Clicked!');
-          }}>
-          <span>Next</span>
-          <i className="fas fa-chevron-circle-right" />
+            className="button"
+            onClick={ () => {
+                console.log('Button Clicked!');
+            } }
+        >
+            <span>Next</span>
+            <i className="fas fa-chevron-circle-right" />
         </div>
-      </div>
-    );
-  }
-}
+    </div>
+);
 
 export default Button;
