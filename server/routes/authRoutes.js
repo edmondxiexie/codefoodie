@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const uuidv4 = require('uuid/v4');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
@@ -9,7 +8,7 @@ const keys = require('../config/keys');
 
 const router = express.Router();
 
-const User = mongoose.model('User');
+const User = mongoose.model('users');
 
 // const { authenticate } = require('../middleware/authenticate');
 
@@ -77,7 +76,7 @@ router.post('/login', (req, res) => {
                     // Sign Token
                     jwt.sign(
                         payload,
-                        keys.secretOrKey,
+                        keys.JWT_SECRET_OR_KEY,
                         { expiresIn: 3600 },
                         (err, token) => {
                             res.json({
