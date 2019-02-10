@@ -7,7 +7,7 @@ pipeline {
         stage('Start') {
             steps {
                 // send build started notifications
-                slackSend (color: '#f1c40f', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} STARTED by user ${env.CHANGE_AUTHOR} (${env.BUILD_URL})")
+                slackSend (color: '#3498db', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} STARTED (${env.BUILD_URL})")
             }
         }
 
@@ -44,11 +44,11 @@ pipeline {
 
     post {
         success {
-            slackSend (color: '#27ae60', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} SUCCESS after ${currentBuild.durationString} (${env.BUILD_URL})")
+            slackSend (color: '#2ecc71', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} SUCCESS after ${currentBuild.durationString.replace(' and counting', '')} (${env.BUILD_URL})")
         }
 
         failure {
-            slackSend (color: '#e74c3c', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} FAILURE after ${currentBuild.durationString} (${env.BUILD_URL})")
+            slackSend (color: '#e74c3c', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} FAILURE after ${currentBuild.durationString.replace(' and counting', '')} (${env.BUILD_URL})")
         }
     }
 }
