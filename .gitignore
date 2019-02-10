@@ -3,3 +3,6 @@ node_modules/
 
 # Ingnore dev config
 server/config/dev.js
+
+# Ingnore restart Jenkins script
+restartJenkins.sh
