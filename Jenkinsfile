@@ -11,11 +11,11 @@ pipeline {
             }
         }
 
-        // stage('Cloning Git') {
-        //     steps {
-        //         git branch: "develop", url: 'https://github.com/edmondxiexie/codefoodie'
-        //     }
-        // }
+        stage('Cloning Git') {
+            steps {
+                git branch: "master", url: 'https://github.com/edmondxiexie/codefoodie'
+            }
+        }
         
         stage('Frontend Install dependencies') {
             steps {
@@ -42,13 +42,10 @@ pipeline {
         }
 
         stage('Deploy') {
-            if(env.BRANCH_NAME == 'master') {
-                steps {
-                    sh 'scp -r client/dist root@157.230.131.190:~/codefoodie/client'
-                    sh 'scp -r server root@157.230.131.190:~/codefoodie'
-                }
+            steps {
+                sh 'scp -r client/dist root@157.230.131.190:~/codefoodie/client'
+                sh 'scp -r server root@157.230.131.190:~/codefoodie'
             }
-
         }
     }
 
