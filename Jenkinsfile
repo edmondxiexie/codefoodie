@@ -7,7 +7,7 @@ pipeline {
         stage('Start') {
             steps {
                 // send build started notifications
-                slackSend (color: '#f1c40f', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} STARTED by user ${CHANGE_AUTHOR} (${env.BUILD_URL})")
+                slackSend (color: '#f1c40f', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} STARTED by user ${env.CHANGE_AUTHOR} (${env.BUILD_URL})")
             }
         }
 
