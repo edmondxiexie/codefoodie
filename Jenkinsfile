@@ -41,16 +41,6 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            when{
-                branch 'master'
-            }
-
-            steps {
-                sh 'scp -r client/dist root@157.230.131.190:~/codefoodie/client'
-                sh 'scp -r server root@157.230.131.190:~/codefoodie'
-            }
-        }
     }
 
     post {
