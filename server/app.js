@@ -8,13 +8,9 @@ const keys = require('./config/keys');
 
 // Models
 require('./models/User');
-require('./models/Todo');
-require('./models/Recipe');
 
 // Routes
-const recipeRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/authRoutes');
-const numRoutes = require('./routes/numRoutes');
 
 const app = express();
 
@@ -22,7 +18,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect(keys.mongoURI).then(
+// Connect to MongoDB
+mongoose.connect(keys.MONGO_URI).then(
     () => {
         console.log('Connected to MongoBD server.');
     },
@@ -38,13 +35,10 @@ app.use(passport.initialize());
 // Passport Config
 require('./config/passport')(passport);
 
-
 // API Routers
-app.use('/api/recipe', recipeRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/num', numRoutes);
 
-console.log(`****** NODE_ENV: ${process.env.NODE_ENV} ******`);
+console.log(`****** NODE_ENV: ${process.env.NODE_ENV || 'develop'} ******`);
 
 if (process.env.NODE_ENV === 'production') {
     // production assets

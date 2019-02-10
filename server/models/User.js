@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const { Schema } = mongoose;
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const _ = require('lodash');
 
 const UserSchema = new Schema({
     email: {
@@ -29,4 +26,4 @@ const UserSchema = new Schema({
     },
 });
 
-mongoose.model('User', UserSchema);
+mongoose.model('users', UserSchema);

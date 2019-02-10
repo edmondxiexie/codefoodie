@@ -1,7 +1,9 @@
 // prod.js - keys in Heroku
 
 module.exports = {
-    mongoURI: process.env.MONGO_URI,
-    cookieKey: process.env.COOKIE_KEY,
-    secretOrKey: process.env.SECRET_OR_KEY,
+    // mLab MongoDB URI
+    MONGO_URI: process.env.MONGO_URI,
+
+    // JWT SecretOrKey
+    JWT_SECRET_OR_KEY: process.env.JWT_SECRET_OR_KEY,
 };
