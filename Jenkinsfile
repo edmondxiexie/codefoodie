@@ -13,7 +13,7 @@ pipeline {
 
         stage('Cloning Git') {
             steps {
-                git branch: env.GIT_BRANCH, url: 'https://github.com/edmondxiexie/codefoodie'
+                git branch: "develop", url: 'https://github.com/edmondxiexie/codefoodie'
             }
         }
         
