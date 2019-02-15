@@ -10,8 +10,6 @@ const router = express.Router();
 
 const User = mongoose.model('users');
 
-// const { authenticate } = require('../middleware/authenticate');
-
 
 // @route   GET api/auth/test
 // @desc    Test auth route
