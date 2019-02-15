@@ -8,9 +8,11 @@ const keys = require('./config/keys');
 
 // Models
 require('./models/User');
+require('./models/Profile');
 
 // Routes
 const authRoutes = require('./routes/authRoutes');
+const profileRoutes = require('./routes/profileRoutes');
 
 const app = express();
 
@@ -37,6 +39,7 @@ require('./config/passport')(passport);
 
 // API Routers
 app.use('/api/auth', authRoutes);
+app.use('/api/profile', profileRoutes);
 
 console.log(`****** NODE_ENV: ${process.env.NODE_ENV || 'develop'} ******`);
 
