@@ -1,7 +1,7 @@
 pipeline {
     agent any
     
-    tools {nodejs "my nodejs"}
+    tools {nodejs "nodejs"}
     
     stages {
         stage('Start') {
