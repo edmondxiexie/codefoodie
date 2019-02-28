@@ -41,21 +41,21 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                sh 'scp -r client/dist root@157.230.131.190:~/codefoodie/client'
-                sh 'scp -r server root@157.230.131.190:~/codefoodie'
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         sh 'scp -r client/dist root@157.230.131.190:~/codefoodie/client'
+        //         sh 'scp -r server root@157.230.131.190:~/codefoodie'
+        //     }
+        // }
     }
 
-    post {
-        success {
-            slackSend (color: '#2ecc71', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} SUCCESS after ${currentBuild.durationString.replace(' and counting', '')} (${env.BUILD_URL})")
-        }
+    // post {
+    //     success {
+    //         slackSend (color: '#2ecc71', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} SUCCESS after ${currentBuild.durationString.replace(' and counting', '')} (${env.BUILD_URL})")
+    //     }
 
-        failure {
-            slackSend (color: '#e74c3c', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} FAILURE after ${currentBuild.durationString.replace(' and counting', '')} (${env.BUILD_URL})")
-        }
-    }
+    //     failure {
+    //         slackSend (color: '#e74c3c', message: "${env.JOB_NAME} - #${env.BUILD_NUMBER} FAILURE after ${currentBuild.durationString.replace(' and counting', '')} (${env.BUILD_URL})")
+    //     }
+    // }
 }
